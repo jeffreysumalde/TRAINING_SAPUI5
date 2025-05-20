@@ -7,20 +7,16 @@ sap.ui.define([
         onInit() {
        },
         
-        onPress: function () {
-            var formEL = document.getElementById('form0');
-            if (formEL) {              
-           // formEL.reset();
-            formEL.reset();        
+       onPress: function(){
+        var oForm = this.byId("form0");
+        var getname = this.byId('select1');
+        var value = getname.setSelectedKey(null); //Clear dropdown
+        oForm.getContent().forEach(function(control) {
+            if (control.isA("sap.m.Input")) {
+                control.setValue(""); // Clears all input fields
             }
-        },
-
-        onPress: function (evt) {
-            var name = document.getElementById('name');
-            if (name) {  
-           name.setValue("");
-            }
-        }    
+        })
+       }
         
     });
 });
